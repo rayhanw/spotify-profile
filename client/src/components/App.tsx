@@ -1,7 +1,8 @@
 import React, { FC, useEffect, useState } from "react";
 import SpotifyWebApi from "spotify-web-api-js";
 
-import UserProfile, { UserInfo } from "./UserProfile";
+import UserProfile from "./User/UserProfile";
+import { UserInfo, DefaultUserInfo, Playlists } from "./User/user_interfaces";
 
 import "./styles/App.css";
 
@@ -11,20 +12,13 @@ type ParamsToken = {
 	username: string;
 } | null;
 
-enum DefaultUserInfo {
-	display_name = "",
-	external_urls = "",
-	followers = "",
-	href = "",
-	id = "",
-	images = "",
-	type = "",
-	uri = ""
-}
-
 const App: FC = () => {
 	const [loggedIn, setLoggedIn] = useState<boolean>(false);
 	const [userInfo, setUserInfo] = useState<UserInfo>(DefaultUserInfo);
+	const [playlists, setPlaylists] = useState<Playlists>({
+		href: "",
+		items: []
+	});
 
 	const getParams = (): ParamsToken => {
 		let [
@@ -48,6 +42,13 @@ const App: FC = () => {
 		setUserInfo(info);
 	};
 
+	const getUserPlaylists = async (spotify: any, username: string) => {
+		const options = { limit: 5 };
+
+		const info: Playlists = await spotify.getUserPlaylists(username, options);
+		setPlaylists(info);
+	};
+
 	useEffect(() => {
 		const token = getParams();
 		const spotify = new SpotifyWebApi();
@@ -56,12 +57,17 @@ const App: FC = () => {
 			spotify.setAccessToken(token.accessToken);
 			setLoggedIn(true);
 			getUserInfo(spotify, token.username);
+			getUserPlaylists(spotify, token.username);
 		}
 	}, []);
 
 	const renderLogin = (): JSX.Element => {
-		if (loggedIn && userInfo.display_name !== "") {
-			return <UserProfile {...userInfo} />;
+		if (
+			loggedIn &&
+			userInfo.display_name !== "" &&
+			playlists.items.length > 0
+		) {
+			return <UserProfile {...userInfo} playlists={playlists} />;
 		}
 
 		return (
