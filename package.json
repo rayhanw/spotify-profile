@@ -14,8 +14,8 @@
 		"request": "~2.83.0"
 	},
 	"scripts": {
-		"start": "node ./authorization_code/app.js",
-		"server": "export NODE_ENV=development && nodemon ./authorization_code/app.js",
+		"start": "node ./server/app.js",
+		"server": "export NODE_ENV=development && nodemon ./server/app.js",
 		"client": "npm run start --prefix client",
 		"dev": "concurrently \"npm run server\" \"npm run client\"",
 		"heroku-postbuild": "cd client && npm install && npm run build"
