@@ -60,7 +60,7 @@ const App: FC = () => {
 	}, []);
 
 	const renderLogin = (): JSX.Element => {
-		if (loggedIn) {
+		if (loggedIn && userInfo.display_name !== "") {
 			return <UserProfile {...userInfo} />;
 		}
 
