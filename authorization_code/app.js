@@ -110,6 +110,8 @@ app.get("/auth/spotify/callback", function(req, res) {
 		};
 
 		request.post(authOptions, function(error, response, body) {
+			console.log("POSTING REQUEST");
+
 			if (!error && response.statusCode === 200) {
 				const { access_token, refresh_token } = body;
 				const options = {
@@ -120,6 +122,7 @@ app.get("/auth/spotify/callback", function(req, res) {
 
 				// use the access token to access the Spotify Web API
 				request.get(options, function(error, response, body) {
+					console.log("GETTING LAST REQUEST");
 					// we can also pass the token to the browser to make requests from there
 					const { uri } = body;
 					res.redirect(
