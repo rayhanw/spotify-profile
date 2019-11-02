@@ -18,6 +18,6 @@
 		"server": "export NODE_ENV=development && nodemon ./authorization_code/app.js",
 		"client": "npm run start --prefix client",
 		"dev": "concurrently \"npm run server\" \"npm run client\"",
-		"heroku-postbuild": "cd client && npm install && npm run build"
+		"heroku-postbuild": "cd ../client && npm install && npm run build"
 	}
 }
