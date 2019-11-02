@@ -1,6 +1,7 @@
 import React, { FC, useEffect, useState } from "react";
 import SpotifyWebApi from "spotify-web-api-js";
 
+import SEO from "./SEO";
 import UserProfile from "./User/UserProfile";
 import {
 	UserInfo,
@@ -99,6 +100,7 @@ const App: FC = () => {
 
 	return (
 		<div className="App">
+			<SEO />
 			<main>{renderUser()}</main>
 		</div>
 	);
