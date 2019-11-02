@@ -1,14 +1,22 @@
 {
-  "author": "Spotify",
-  "name": "web-api-auth-examples",
-  "description": "Basic examples of the Spotify authorization flows through OAuth 2",
-  "version": "0.0.2",
-  "dependencies": {
-    "cookie-parser": "^1.4.4",
-    "cors": "^2.8.4",
-    "dotenv": "^8.2.0",
-    "express": "~4.16.0",
-    "querystring": "~0.2.0",
-    "request": "~2.83.0"
-  }
+	"author": "Spotify",
+	"name": "web-api-auth-examples",
+	"description": "Basic examples of the Spotify authorization flows through OAuth 2",
+	"version": "0.0.2",
+	"dependencies": {
+		"concurrently": "^5.0.0",
+		"cookie-parser": "^1.4.4",
+		"cors": "^2.8.4",
+		"dotenv": "^8.2.0",
+		"express": "~4.16.0",
+		"nodemon": "^1.19.4",
+		"querystring": "~0.2.0",
+		"request": "~2.83.0"
+	},
+	"scripts": {
+		"start": "node ./authorization_code/app.js",
+		"server": "nodemon ./authorization_code/app.js",
+		"client": "npm run start --prefix client",
+		"dev": "concurrently \"npm run server\" \"npm run client\""
+	}
 }
