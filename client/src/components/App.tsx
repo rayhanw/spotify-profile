@@ -19,7 +19,7 @@ enum DefaultUserInfo {
 	id = "",
 	images = "",
 	type = "",
-	url = ""
+	uri = ""
 }
 
 const App: FC = () => {
