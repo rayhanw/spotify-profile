@@ -6,3 +6,11 @@
 .playlists .playlist:not(:last-of-type) {
   margin-right: 24px;
 }
+
+.playlist-owner {
+  color: rgba(255, 255, 255, .5);
+}
+
+.playlist-owner:hover {
+  color: rgba(255, 255, 255, .9);
+}

@@ -2,7 +2,12 @@ import React, { FC, useEffect, useState } from "react";
 import SpotifyWebApi from "spotify-web-api-js";
 
 import UserProfile from "./User/UserProfile";
-import { UserInfo, DefaultUserInfo, Playlists } from "./User/user_interfaces";
+import {
+	UserInfo,
+	DefaultUserInfo,
+	Playlists,
+	RecentlyPlayedTracks
+} from "./User/user_interfaces";
 
 import "./styles/App.css";
 
@@ -19,6 +24,7 @@ const App: FC = () => {
 		href: "",
 		items: []
 	});
+	const [recentTracks, setRecentTracks] = useState<{}[]>([]);
 
 	const getParams = (): ParamsToken => {
 		let [
@@ -49,6 +55,11 @@ const App: FC = () => {
 		setPlaylists(info);
 	};
 
+	const getRecentlyPlayed = async (spotify: any) => {
+		const info = await spotify.getMyRecentlyPlayedTracks();
+		setRecentTracks(info);
+	};
+
 	useEffect(() => {
 		const token = getParams();
 		const spotify = new SpotifyWebApi();
@@ -58,6 +69,7 @@ const App: FC = () => {
 			setLoggedIn(true);
 			getUserInfo(spotify, token.username);
 			getUserPlaylists(spotify, token.username);
+			getRecentlyPlayed(spotify);
 		}
 	}, []);
 
@@ -67,7 +79,13 @@ const App: FC = () => {
 			userInfo.display_name !== "" &&
 			playlists.items.length > 0
 		) {
-			return <UserProfile {...userInfo} playlists={playlists} />;
+			return (
+				<UserProfile
+					{...userInfo}
+					playlists={playlists}
+					recentTracks={recentTracks}
+				/>
+			);
 		}
 
 		return (

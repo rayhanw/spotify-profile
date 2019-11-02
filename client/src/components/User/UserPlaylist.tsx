@@ -7,12 +7,27 @@ interface PlaylistProps {
 }
 
 const UserPlaylist: FC<PlaylistProps> = ({ playlist }) => {
-	console.log(playlist);
 	const [, , uri] = playlist.uri.split(":");
+
+	const showName = (): string => {
+		const [first, second] = playlist.owner.display_name.split(" ");
+
+		return `${first} ${second}`;
+	};
 
 	return (
 		<div className="playlist">
-			<h4>{playlist.name}</h4>
+			<h4>
+				{playlist.name} by{" "}
+				<a
+					className="playlist-owner"
+					href={playlist.owner.href}
+					target="_blank"
+					rel="noopener noreferrer"
+				>
+					{showName()}
+				</a>
+			</h4>
 			<iframe
 				src={`https://open.spotify.com/embed/playlist/${uri}`}
 				width="300"

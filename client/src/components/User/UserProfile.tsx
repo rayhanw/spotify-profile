@@ -1,6 +1,7 @@
 import React, { FC } from "react";
 
 import UserPlaylists from "./UserPlaylists";
+import UserRecentlyPlayed from "./UserRecentlyPlayed";
 import { UserInfo } from "./user_interfaces";
 
 import "./styles/Profile.css";
@@ -8,6 +9,10 @@ import "./styles/Profile.css";
 const UserProfile: FC<UserInfo> = props => {
 	const renderPlaylists = () => {
 		return <UserPlaylists {...props.playlists} />;
+	};
+
+	const renderTracks = () => {
+		return <UserRecentlyPlayed {...props.recentTracks} />;
 	};
 
 	return (
@@ -31,6 +36,7 @@ const UserProfile: FC<UserInfo> = props => {
 				</div>
 			</div>
 			<div>{renderPlaylists()}</div>
+			<div>{renderTracks()}</div>
 		</div>
 	);
 };

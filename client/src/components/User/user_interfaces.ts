@@ -8,11 +8,12 @@ export interface UserInfo {
 	type: any;
 	uri: any;
 	playlists: any;
+	recentTracks: any;
 }
 
 interface PlaylistOwner {
 	display_name: string;
-	external_urls: any;
+	href: string;
 }
 
 export interface Playlist {
@@ -31,6 +32,20 @@ export interface Playlists {
 	items: Playlist[];
 }
 
+interface RecentlyPlayedTrack {
+	track: {
+		name: string;
+		popularity: string;
+		preview_url: string;
+		duration_ms: number;
+	};
+}
+
+export interface RecentlyPlayedTracks {
+	items: RecentlyPlayedTrack[];
+	href: string;
+}
+
 export enum DefaultUserInfo {
 	display_name = "",
 	external_urls = "",
@@ -40,5 +55,6 @@ export enum DefaultUserInfo {
 	images = "",
 	type = "",
 	uri = "",
-	playlists = ""
+	playlists = "",
+	recentTracks = ""
 }
