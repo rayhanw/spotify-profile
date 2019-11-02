@@ -1,7 +1,7 @@
 import React, { FC, useEffect, useState } from "react";
 import SpotifyWebApi from "spotify-web-api-js";
 
-import UserProfile from "./UserProfile";
+import UserProfile, { UserInfo } from "./UserProfile";
 
 import "./styles/App.css";
 
@@ -10,20 +10,21 @@ type ParamsToken = {
 	refreshToken: string;
 	username: string;
 } | null;
-type NowPlaying = { name: string; albumArt: string };
-interface UserInfo {
-	display_name: string;
-	external_urls: any;
-	followers: any;
-	href: string;
-	id: string;
-	images: any;
-	type: any;
-	url: any;
+
+enum DefaultUserInfo {
+	display_name = "",
+	external_urls = "",
+	followers = "",
+	href = "",
+	id = "",
+	images = "",
+	type = "",
+	url = ""
 }
 
 const App: FC = () => {
 	const [loggedIn, setLoggedIn] = useState<boolean>(false);
+	const [userInfo, setUserInfo] = useState<UserInfo>(DefaultUserInfo);
 
 	const getParams = (): ParamsToken => {
 		let [
@@ -42,10 +43,9 @@ const App: FC = () => {
 		return null;
 	};
 
-	const getNowPlaying = (spotify: any, username: string): void => {
-		spotify
-			.getUser("tygrand")
-			.then((response: UserInfo) => console.log(response));
+	const getUserInfo = async (spotify: any, username: string) => {
+		const info: UserInfo = await spotify.getUser(username);
+		setUserInfo(info);
 	};
 
 	useEffect(() => {
@@ -55,13 +55,13 @@ const App: FC = () => {
 		if (token) {
 			spotify.setAccessToken(token.accessToken);
 			setLoggedIn(true);
-			getNowPlaying(spotify, token.username);
+			getUserInfo(spotify, token.username);
 		}
 	}, []);
 
 	const renderLogin = (): JSX.Element => {
 		if (loggedIn) {
-			return <UserProfile />;
+			return <UserProfile {...userInfo} />;
 		}
 
 		return (
