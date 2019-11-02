@@ -14,9 +14,13 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #09d3ac;
+.App-header a {
+  color: var(--sec);
+  transition: color 0.2s ease;
+}
+
+.App-header a:hover {
+  color: var(--sec-hover);
 }

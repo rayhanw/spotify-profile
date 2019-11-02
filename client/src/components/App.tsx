@@ -75,7 +75,7 @@ const App: FC = () => {
 		}
 	}, []);
 
-	const renderLogin = (): JSX.Element => {
+	const renderUser = (): JSX.Element => {
 		if (
 			loggedIn &&
 			userInfo.display_name !== "" &&
@@ -99,7 +99,7 @@ const App: FC = () => {
 
 	return (
 		<div className="App">
-			<main>{renderLogin()}</main>
+			<main>{renderUser()}</main>
 		</div>
 	);
 };

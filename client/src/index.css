@@ -1,6 +1,7 @@
 :root {
   --main: #191919;
   --sec: #1DB954;
+  --sec-hover: rgb(34, 138, 71);
 }
 
 body {
