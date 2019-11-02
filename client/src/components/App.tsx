@@ -76,11 +76,18 @@ const App: FC = () => {
 	}, []);
 
 	const renderUser = (): JSX.Element => {
+		console.log("start login:", loggedIn);
+		console.log("start user info:", userInfo.display_name);
+		console.log("start playlist:", playlists.items);
+
 		if (
 			loggedIn &&
 			userInfo.display_name !== "" &&
 			playlists.items.length > 0
 		) {
+			console.log(loggedIn);
+			console.log(userInfo);
+			console.log(playlists);
 			return (
 				<UserProfile
 					{...userInfo}
