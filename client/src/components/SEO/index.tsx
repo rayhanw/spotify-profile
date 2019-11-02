@@ -27,6 +27,8 @@ const SEO: FC = () => {
 			{/* Twitter Card */}
 			<meta property="twitter:card" content="summary_large_image" />
 			<meta property="twitter:url" content="https://youtify.herokuapp.com/" />
+			<meta name="twitter:site" content="@domosaurusdex" />
+			<meta name="twitter:creator" content="@domosaurusdex" />
 			<meta property="twitter:title" content="Youtify" />
 			<meta
 				property="twitter:description"
