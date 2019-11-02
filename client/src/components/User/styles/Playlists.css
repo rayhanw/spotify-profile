@@ -1,0 +1,8 @@
+.playlists {
+  display: flex;
+  justify-content: center;
+}
+
+.playlists .playlist:not(:last-of-type) {
+  margin-right: 24px;
+}

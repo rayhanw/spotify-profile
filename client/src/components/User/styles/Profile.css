@@ -1,0 +1,28 @@
+.avatar {
+  width: 240px;
+  height: 300px;
+  border-radius: 10px;
+}
+
+.profile-link {
+  color: rgba(255, 255, 255, .5);
+  font-size: 20px;
+}
+
+.profile-link:hover {
+  color: rgba(255, 255, 255, .8);
+}
+
+.profile-header {
+  display: flex;
+  justify-content: center;
+}
+
+.profile-subheader {
+  text-align: left;
+  margin-left: 24px;
+}
+
+.User-profile {
+  margin-top: 4em;
+}
