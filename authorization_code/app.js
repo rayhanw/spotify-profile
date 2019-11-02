@@ -166,6 +166,7 @@ app.get("/refresh_token", function(req, res) {
 });
 
 if (process.env.NODE_ENV === "production") {
+	console.log("in production");
 	// Express will serve production assets (main.js, main.css, etc)
 	app.use(express.static("client/build"));
 	// Express will serve up the index.html file if it doesn't recognize the route
