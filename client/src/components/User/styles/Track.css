@@ -7,6 +7,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-column-gap: 24px;
+  grid-row-gap: 8px;
   margin-top: 24px;
   justify-items: center;
 }
@@ -16,7 +17,7 @@
   display: flex;
   justify-content: space-between;
   width: 258px;
-  border: 1px solid rgba(255, 255, 255, .5);
+  border: 1px solid rgba(255, 255, 255, .1);
 }
 
 .track-info p,
