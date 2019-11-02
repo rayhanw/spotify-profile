@@ -30,13 +30,19 @@
 		</script>
 
 		<script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.1/handlebars.min.js"></script>
-		<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+		<script
+			src="https://code.jquery.com/jquery-3.4.1.min.js"
+			integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+			crossorigin="anonymous"
+		></script>
 		<script>
 			(function() {
 				/**
 				 * Obtains parameters from the hash of the URL
 				 * @return Object
 				 */
+				console.log("inside script!");
+
 				function getHashParams() {
 					var hashParams = {};
 					var e,
