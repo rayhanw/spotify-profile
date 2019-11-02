@@ -6,6 +6,7 @@
  * For more information, read
  * https://developer.spotify.com/web-api/authorization-guide/#authorization_code_flow
  */
+// https://github.com/spotify/web-api-auth-examples
 
 const express = require("express"); // Express web server framework
 const request = require("request"); // "Request" library
@@ -22,7 +23,10 @@ const {
 
 const client_id = SPOTIFY_CLIENT_ID; // Your client id
 const client_secret = SPOTIFY_CLIENT_SECRET; // Your secret
-const redirect_uri = SPOTIFY_CALLBACK; // Your redirect uri
+const redirect_uri =
+	process.env.NODE_ENV === "development"
+		? "http://localhost:8888/auth/spotify/callback"
+		: SPOTIFY_CALLBACK; // Your redirect uri
 
 /**
  * Generates a random string containing numbers and letters
@@ -49,7 +53,7 @@ app
 	.use(cors())
 	.use(cookieParser());
 
-app.get("/login", function(req, res) {
+app.get("/auth/spotify/login", function(req, res) {
 	const state = generateRandomString(16);
 	res.cookie(stateKey, state);
 
@@ -60,15 +64,15 @@ app.get("/login", function(req, res) {
 		"https://accounts.spotify.com/authorize?" +
 			querystring.stringify({
 				response_type: "code",
-				client_id: client_id,
-				scope: scope,
-				redirect_uri: redirect_uri,
-				state: state
+				client_id,
+				scope,
+				redirect_uri,
+				state
 			})
 	);
 });
 
-app.get("/callback", function(req, res) {
+app.get("/auth/spotify/callback", function(req, res) {
 	// your application requests refresh and access tokens
 	// after checking the state parameter
 
@@ -76,7 +80,7 @@ app.get("/callback", function(req, res) {
 	const state = req.query.state || null;
 	const storedState = req.cookies ? req.cookies[stateKey] : null;
 
-	if (state === null || state !== storedState) {
+	if (state === null) {
 		res.redirect(
 			"/#" +
 				querystring.stringify({
@@ -161,6 +165,18 @@ app.get("/refresh_token", function(req, res) {
 	});
 });
 
-app.listen(8888, () => {
-	console.log("Listening on 8888");
+if (process.env.NODE_ENV === "production") {
+	// Express will serve production assets (main.js, main.css, etc)
+	app.use(express.static("client/build"));
+	// Express will serve up the index.html file if it doesn't recognize the route
+	const path = require("path");
+	app.get("*", (req, res) => {
+		res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+	});
+}
+
+const PORT = process.env.PORT || 8888;
+
+app.listen(PORT, () => {
+	console.log("Listening on port:", PORT);
 });

@@ -92,7 +92,7 @@ const App: FC = () => {
 
 		return (
 			<header className="App-header">
-				<a href="http://localhost:8888">Login to Spotify</a>
+				<a href="/auth/spotify/login">Login to Spotify</a>
 			</header>
 		);
 	};
