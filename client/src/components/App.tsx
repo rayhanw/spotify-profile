@@ -24,7 +24,7 @@ const App: FC = () => {
 		href: "",
 		items: []
 	});
-	const [recentTracks, setRecentTracks] = useState<{}[]>([]);
+	const [recentTracks, setRecentTracks] = useState<RecentlyPlayedTracks[]>([]);
 
 	const getParams = (): ParamsToken => {
 		let [
@@ -56,7 +56,9 @@ const App: FC = () => {
 	};
 
 	const getRecentlyPlayed = async (spotify: any) => {
-		const info = await spotify.getMyRecentlyPlayedTracks();
+		const options = { limit: 10 };
+
+		const info = await spotify.getMyRecentlyPlayedTracks(options);
 		setRecentTracks(info);
 	};
 

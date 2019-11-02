@@ -32,12 +32,14 @@ export interface Playlists {
 	items: Playlist[];
 }
 
-interface RecentlyPlayedTrack {
+export interface RecentlyPlayedTrack {
 	track: {
 		name: string;
 		popularity: string;
 		preview_url: string;
 		duration_ms: number;
+		id: number;
+		artists: { name: string; href: string }[];
 	};
 }
 

@@ -12,7 +12,7 @@ const UserPlaylist: FC<PlaylistProps> = ({ playlist }) => {
 	const showName = (): string => {
 		const [first, second] = playlist.owner.display_name.split(" ");
 
-		return `${first} ${second}`;
+		return `${first} ${second ? second : ""}`;
 	};
 
 	return (

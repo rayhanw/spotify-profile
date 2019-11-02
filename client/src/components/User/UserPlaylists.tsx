@@ -12,7 +12,12 @@ const UserPlaylists: FC<Playlists> = props => {
 		));
 	};
 
-	return <div className="playlists">{renderPlaylist()}</div>;
+	return (
+		<div>
+			<h3 style={{ marginBottom: 0 }}>Playlists</h3>
+			<div className="playlists">{renderPlaylist()}</div>
+		</div>
+	);
 };
 
 export default UserPlaylists;
