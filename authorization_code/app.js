@@ -18,7 +18,8 @@ require("dotenv").config();
 const {
 	SPOTIFY_CLIENT_ID,
 	SPOTIFY_CLIENT_SECRET,
-	SPOTIFY_CALLBACK
+	REDIRECT_URI,
+	FRONTEND_URI
 } = process.env;
 
 const client_id = SPOTIFY_CLIENT_ID; // Your client id
@@ -26,7 +27,11 @@ const client_secret = SPOTIFY_CLIENT_SECRET; // Your secret
 const redirect_uri =
 	process.env.NODE_ENV === "development"
 		? "http://localhost:8888/auth/spotify/callback"
-		: SPOTIFY_CALLBACK; // Your redirect uri
+		: REDIRECT_URI; // Your redirect uri
+const frontend_uri =
+	process.env.NODE_ENV === "development"
+		? "http://localhost:3000/"
+		: FRONTEND_URI;
 
 /**
  * Generates a random string containing numbers and letters
@@ -118,7 +123,7 @@ app.get("/auth/spotify/callback", function(req, res) {
 					// we can also pass the token to the browser to make requests from there
 					const { uri } = body;
 					res.redirect(
-						"http://localhost:3000/" +
+						frontend_uri +
 							querystring.stringify({
 								access_token,
 								refresh_token,
