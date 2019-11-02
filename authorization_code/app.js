@@ -112,6 +112,8 @@ app.get("/auth/spotify/callback", function(req, res) {
 		request.post(authOptions, function(error, response, body) {
 			if (!error && response.statusCode === 200) {
 				const { access_token, refresh_token } = body;
+				console.log("ACCESS TOKEN:", access_token);
+				console.log("REFRESH_TOKEN:", refresh_token);
 				const options = {
 					url: "https://api.spotify.com/v1/me",
 					headers: { Authorization: "Bearer " + access_token },
