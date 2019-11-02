@@ -60,7 +60,7 @@ app
 
 app.get("/auth/spotify/login", function(req, res) {
 	const state = generateRandomString(16);
-	res.cookie(stateKey, state);
+	res.cookie(stateKey, state, { expires: new Date(Date.now() + 90000000) });
 
 	// your application requests authorization
 	const scope =
