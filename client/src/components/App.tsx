@@ -17,11 +17,6 @@ type ParamsToken = {
 	username: string;
 } | null;
 
-const LOGIN_URI =
-	process.env.NODE_ENV === "production"
-		? "https://youtify.herokuapp.com/auth/spotify/login"
-		: "http://localhost:8888/auth/spotify/login";
-
 const App: FC = () => {
 	const [loggedIn, setLoggedIn] = useState<boolean>(false);
 	const [userInfo, setUserInfo] = useState<UserInfo>(DefaultUserInfo);
@@ -104,7 +99,7 @@ const App: FC = () => {
 
 		return (
 			<header className="App-header">
-				<a href={LOGIN_URI}>Login to Spotify</a>
+				<a href="/auth/spotify/login">Login to Spotify</a>
 			</header>
 		);
 	};

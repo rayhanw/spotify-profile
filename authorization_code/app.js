@@ -122,6 +122,14 @@ app.get("/auth/spotify/callback", function(req, res) {
 				request.get(options, function(error, response, body) {
 					// we can also pass the token to the browser to make requests from there
 					const { uri } = body;
+					console.log(
+						frontend_uri +
+							querystring.stringify({
+								access_token,
+								refresh_token,
+								uri
+							})
+					);
 					res.redirect(
 						frontend_uri +
 							querystring.stringify({
