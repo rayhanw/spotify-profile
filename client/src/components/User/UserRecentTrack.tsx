@@ -18,7 +18,11 @@ const UserRecentTrack: FC<UserTrack> = ({ track }) => {
 		<div className="track">
 			<div className="track-info">
 				<h4>
-					<a href={artist.href} target="_blank" rel="noopener noreferrer">
+					<a
+						href={artist.external_urls.spotify}
+						target="_blank"
+						rel="noopener noreferrer"
+					>
 						{artist.name}
 					</a>
 				</h4>

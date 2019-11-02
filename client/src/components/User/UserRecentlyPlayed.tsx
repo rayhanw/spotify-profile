@@ -14,7 +14,7 @@ const UserRecentlyPlayed: FC<RecentlyPlayedTracks> = props => {
 	};
 
 	return (
-		<div>
+		<div className="tracks-container">
 			<h3 style={{ marginBottom: 0 }}>Recently played songs</h3>
 			<div className="tracks">{renderTrack()}</div>
 		</div>

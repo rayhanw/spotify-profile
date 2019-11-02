@@ -1,3 +1,12 @@
+interface PlaylistOwner {
+	display_name: string;
+	href: string;
+}
+
+interface Link {
+	spotify: string;
+}
+
 export interface UserInfo {
 	display_name: string;
 	external_urls: any;
@@ -9,11 +18,6 @@ export interface UserInfo {
 	uri: any;
 	playlists: any;
 	recentTracks: any;
-}
-
-interface PlaylistOwner {
-	display_name: string;
-	href: string;
 }
 
 export interface Playlist {
@@ -39,7 +43,7 @@ export interface RecentlyPlayedTrack {
 		preview_url: string;
 		duration_ms: number;
 		id: number;
-		artists: { name: string; href: string }[];
+		artists: { name: string; external_urls: Link }[];
 	};
 }
 
