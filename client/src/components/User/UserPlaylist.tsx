@@ -14,14 +14,14 @@ const UserPlaylist: FC<PlaylistProps> = ({ playlist }) => {
 
 		return `${first} ${second ? second : ""}`;
 	};
-
+	console.log(playlist);
 	return (
 		<div className="playlist">
 			<h4>
 				{playlist.name} by{" "}
 				<a
 					className="playlist-owner"
-					href={playlist.owner.href}
+					href={playlist.owner.external_urls.spotify}
 					target="_blank"
 					rel="noopener noreferrer"
 				>

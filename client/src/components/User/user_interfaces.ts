@@ -1,10 +1,9 @@
-interface PlaylistOwner {
-	display_name: string;
-	href: string;
-}
-
 interface Link {
 	spotify: string;
+}
+interface PlaylistOwner {
+	display_name: string;
+	external_urls: Link;
 }
 
 export interface UserInfo {

@@ -12,7 +12,6 @@ const UserRecentTrack: FC<UserTrack> = ({ track }) => {
 	const trackInfo = track.track;
 	const { name, artists, duration_ms } = trackInfo;
 	const [artist] = artists;
-	console.log(trackInfo);
 
 	return (
 		<div className="track">

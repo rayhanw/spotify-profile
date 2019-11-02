@@ -9,6 +9,7 @@
 
 .playlist-owner {
   color: rgba(255, 255, 255, .5);
+  transition: color 0.2s ease;
 }
 
 .playlist-owner:hover {
