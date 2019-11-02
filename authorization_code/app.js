@@ -112,8 +112,6 @@ app.get("/auth/spotify/callback", function(req, res) {
 		request.post(authOptions, function(error, response, body) {
 			if (!error && response.statusCode === 200) {
 				const { access_token, refresh_token } = body;
-				console.log("ACCESS TOKEN:", access_token);
-				console.log("REFRESH_TOKEN:", refresh_token);
 				const options = {
 					url: "https://api.spotify.com/v1/me",
 					headers: { Authorization: "Bearer " + access_token },
@@ -124,7 +122,6 @@ app.get("/auth/spotify/callback", function(req, res) {
 				request.get(options, function(error, response, body) {
 					// we can also pass the token to the browser to make requests from there
 					const { uri } = body;
-					console.log("Front end url:", frontend_uri);
 					res.redirect(
 						frontend_uri +
 							querystring.stringify({
@@ -133,7 +130,6 @@ app.get("/auth/spotify/callback", function(req, res) {
 								uri
 							})
 					);
-					console.log("REDIRECTED");
 				});
 			} else {
 				res.redirect(
@@ -155,11 +151,11 @@ app.get("/refresh_token", function(req, res) {
 		headers: {
 			Authorization:
 				"Basic " +
-				new Buffer(client_id + ":" + client_secret).toString("base64")
+				Buffer.from(client_id + ":" + client_secret).toString("base64")
 		},
 		form: {
 			grant_type: "refresh_token",
-			refresh_token: refresh_token
+			refresh_token
 		},
 		json: true
 	};
@@ -168,7 +164,7 @@ app.get("/refresh_token", function(req, res) {
 		if (!error && response.statusCode === 200) {
 			const access_token = body.access_token;
 			res.send({
-				access_token: access_token
+				access_token
 			});
 		}
 	});
