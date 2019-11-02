@@ -14,7 +14,7 @@ const UserPlaylist: FC<PlaylistProps> = ({ playlist }) => {
 
 		return `${first} ${second ? second : ""}`;
 	};
-	console.log(playlist);
+
 	return (
 		<div className="playlist">
 			<h4>
