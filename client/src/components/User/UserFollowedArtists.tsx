@@ -14,7 +14,12 @@ const UserFollowedArtists: FC<FollowedArtists> = ({ items }) => {
 		}
 	};
 
-	return <div className="artists">{renderArtists()}</div>;
+	return (
+		<div>
+			<h3 style={{ marginBottom: 0 }}>Followed artists</h3>
+			<div className="artists">{renderArtists()}</div>
+		</div>
+	);
 };
 
 export default UserFollowedArtists;
