@@ -1,15 +1,20 @@
+.playlist-container {
+  margin: 0 auto;
+}
+
 .playlists {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  overflow-x: scroll;
 }
 
 .playlist h4 {
   min-height: 40px
 }
 
-.playlists .playlist:not(:last-of-type) {
+.playlist {
   margin-right: 24px;
+  max-width: 300px;
 }
 
 .playlist-owner {
