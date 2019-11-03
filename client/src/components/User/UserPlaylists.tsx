@@ -13,7 +13,7 @@ const UserPlaylists: FC<Playlists> = props => {
 	};
 
 	return (
-		<div className="playlist-container">
+		<div className="playlist-container" id="playlist">
 			<h3 style={{ marginBottom: 0 }}>Playlists</h3>
 			<div className="playlists">{renderPlaylist()}</div>
 		</div>

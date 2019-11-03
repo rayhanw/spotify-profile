@@ -15,7 +15,7 @@ const UserFollowedArtists: FC<FollowedArtists> = ({ items }) => {
 	};
 
 	return (
-		<div>
+		<div id="artist">
 			<h3 style={{ marginBottom: 0 }}>Followed artists</h3>
 			<div className="artists">{renderArtists()}</div>
 		</div>
