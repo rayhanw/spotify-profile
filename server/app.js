@@ -62,9 +62,19 @@ app.get("/auth/spotify/login", function(req, res) {
 	const state = generateRandomString(16);
 	res.cookie(stateKey, state, { expires: new Date(Date.now() + 90000000) });
 
-	// your application requests authorization
-	const scope =
-		"user-read-private user-read-email playlist-read-collaborative user-read-currently-playing user-read-playback-state user-library-read user-read-recently-played";
+	// your application requests authorization (get all read scopes)
+	const scopes = [
+		"playlist-read-collaborative",
+		"playlist-read-private",
+		"user-read-currently-playing",
+		"user-read-playback-state",
+		"user-read-private",
+		"user-library-read",
+		"user-follow-read",
+		"user-read-recently-played",
+		"user-top-read"
+	];
+	const scope = scopes.join(" ");
 	res.redirect(
 		"https://accounts.spotify.com/authorize?" +
 			querystring.stringify({
