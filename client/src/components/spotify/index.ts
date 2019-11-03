@@ -15,3 +15,8 @@ export const getRecentlyPlayed = async (spotify: any) => {
 	const info = await spotify.getMyRecentlyPlayedTracks(options);
 	return info;
 };
+
+export const getFollowedArtists = async (spotify: any) => {
+	const info = await spotify.getFollowedArtists(options);
+	return info;
+};

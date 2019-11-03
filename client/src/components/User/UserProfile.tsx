@@ -2,17 +2,23 @@ import React, { FC } from "react";
 
 import UserPlaylists from "./UserPlaylists";
 import UserRecentlyPlayed from "./UserRecentlyPlayed";
+import UserFollowedArtists from "./UserFollowedArtists";
 import { UserInfo } from "./user_interfaces";
 
 import "./styles/Profile.css";
 
 const UserProfile: FC<UserInfo> = props => {
-	const renderPlaylists = () => {
+	// console.log(props.followedArtists);
+	const renderPlaylists = (): JSX.Element => {
 		return <UserPlaylists {...props.playlists} />;
 	};
 
-	const renderTracks = () => {
+	const renderTracks = (): JSX.Element => {
 		return <UserRecentlyPlayed {...props.recentTracks} />;
+	};
+
+	const renderFollowedArtists = (): JSX.Element => {
+		return <UserFollowedArtists {...props.followedArtists.artists} />;
 	};
 
 	return (
@@ -37,6 +43,7 @@ const UserProfile: FC<UserInfo> = props => {
 			</div>
 			<div>{renderPlaylists()}</div>
 			<div>{renderTracks()}</div>
+			<div>{renderFollowedArtists()}</div>
 		</div>
 	);
 };

@@ -1,0 +1,9 @@
+.artists {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.genres {
+  list-style: none;
+  padding: 0;
+}

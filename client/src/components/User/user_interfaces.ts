@@ -6,6 +6,21 @@ interface PlaylistOwner {
 	external_urls: Link;
 }
 
+interface ArtistImage {
+	height: number;
+	width: number;
+	url: string;
+}
+
+export interface Artist {
+	external_urls: Link;
+	followers: { total: number };
+	genres: string[];
+	images: ArtistImage[];
+	name: string;
+	id: number;
+}
+
 export interface UserInfo {
 	display_name: string;
 	external_urls: any;
@@ -17,6 +32,7 @@ export interface UserInfo {
 	uri: any;
 	playlists: any;
 	recentTracks: any;
+	followedArtists: any;
 }
 
 export interface Playlist {
@@ -51,6 +67,10 @@ export interface RecentlyPlayedTracks {
 	href: string;
 }
 
+export interface FollowedArtists {
+	items: Artist[];
+}
+
 export enum DefaultUserInfo {
 	display_name = "",
 	external_urls = "",
@@ -61,5 +81,6 @@ export enum DefaultUserInfo {
 	type = "",
 	uri = "",
 	playlists = "",
-	recentTracks = ""
+	recentTracks = "",
+	followedArtists = ""
 }
