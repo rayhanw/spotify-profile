@@ -7,7 +7,8 @@ interface ArtistProp {
 }
 
 const Artist: FC<ArtistProp> = ({ artist }) => {
-	const { followers, name, images, genres } = artist;
+	const { followers, name, images, genres, external_urls } = artist;
+	const { spotify } = external_urls;
 	const [first] = images;
 
 	const renderGenres = (): JSX.Element[] => {
@@ -20,14 +21,17 @@ const Artist: FC<ArtistProp> = ({ artist }) => {
 	return (
 		<div className="Artist">
 			<h3>
-				{name} with {followers.total} followers
+				{name} with <span style={{ color: "white" }}>{followers.total}</span>{" "}
+				followers
 			</h3>
-			<img
-				src={first.url}
-				alt={name}
-				height={first.height / 2}
-				width={first.width / 2}
-			/>
+			<a href={spotify} target="_blank" rel="noopener noreferrer">
+				<img
+					src={first.url}
+					alt={name}
+					height={first.height / 2}
+					width={first.width / 2}
+				/>
+			</a>
 			<ul className="genres">{renderGenres()}</ul>
 		</div>
 	);
