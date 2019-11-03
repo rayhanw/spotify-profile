@@ -21,7 +21,7 @@ const UserProfile: FC<UserInfo> = props => {
 	};
 
 	return (
-		<div className="User-profile">
+		<div className="User-profile" id="profile">
 			<div>
 				<div className="profile-header">
 					<img src={props.images[0].url} alt="avatar" className="avatar" />
