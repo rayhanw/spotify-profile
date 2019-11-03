@@ -34,9 +34,15 @@
 }
 
 /* Tablet */
-@media only screen and (min-width: 768px) {
-  .playlist {
-    margin-right: 0;
+@media only screen and (min-width: 600px) {
+  .playlist:nth-child(odd) {
+    margin-right: 16px;
+  }
+}
+
+@media only screen and (min-width: 900px) {
+  .playlist:nth-child(even) {
+    margin-right: 16px;
   }
 }
 
