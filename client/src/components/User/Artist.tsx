@@ -11,8 +11,10 @@ const Artist: FC<ArtistProp> = ({ artist }) => {
 	const [first] = images;
 
 	const renderGenres = (): JSX.Element[] => {
-		console.log(genres.slice(0, 3));
-		return genres.slice(0, 3).map((genre: any) => <li key={genre}>{genre}</li>);
+		return genres
+			.slice(0, 3)
+			.sort((a: string, b: string) => a.charCodeAt(0) - b.charCodeAt(0))
+			.map((genre: any) => <li key={genre}>{genre}</li>);
 	};
 
 	return (
