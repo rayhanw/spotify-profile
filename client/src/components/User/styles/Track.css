@@ -39,3 +39,24 @@
 .track-duration {
   color: white;
 }
+
+/* Mobile */
+@media only screen and (min-width: 320px) {
+  .tracks {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Tablet */
+@media only screen and (min-width: 768px) {
+  .tracks {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Big screen (4K+) */
+@media only screen and (min-width: 1200px) {
+  .tracks {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
