@@ -7,3 +7,12 @@
   list-style: none;
   padding: 0;
 }
+
+.artist-name {
+  color: white;
+  transition: font-weight .25s ease;
+}
+
+.artist-name:hover {
+  font-weight: bold;
+}

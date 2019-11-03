@@ -21,10 +21,17 @@ const Artist: FC<ArtistProp> = ({ artist }) => {
 	return (
 		<div className="Artist">
 			<h3>
-				{name} with <span style={{ color: "white" }}>{followers.total}</span>{" "}
-				followers
+				<a className="artist-name" href={first.url}>
+					{name}
+				</a>{" "}
+				with <span style={{ color: "white" }}>{followers.total}</span> followers
 			</h3>
-			<a href={spotify} target="_blank" rel="noopener noreferrer">
+			<a
+				href={spotify}
+				target="_blank"
+				rel="noopener noreferrer"
+				className="artist-photo"
+			>
 				<img
 					src={first.url}
 					alt={name}
