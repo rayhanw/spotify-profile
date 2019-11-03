@@ -38,6 +38,10 @@
   .playlist:nth-child(odd) {
     margin-right: 16px;
   }
+
+  .playlist {
+    margin-bottom: 16px;
+  }
 }
 
 @media only screen and (min-width: 900px) {
