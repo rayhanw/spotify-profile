@@ -8,7 +8,6 @@ import { UserInfo } from "./user_interfaces";
 import "./styles/Profile.css";
 
 const UserProfile: FC<UserInfo> = props => {
-	// console.log(props.followedArtists);
 	const renderPlaylists = (): JSX.Element => {
 		return <UserPlaylists {...props.playlists} />;
 	};

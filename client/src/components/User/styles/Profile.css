@@ -2,6 +2,12 @@
   width: 240px;
   height: 300px;
   border-radius: 10px;
+  border: 10px solid transparent;
+  transition: border .3s linear;
+}
+
+.avatar:hover {
+  border: 10px solid var(--sec);
 }
 
 .profile-link {
@@ -17,6 +23,7 @@
 .profile-header {
   display: flex;
   justify-content: center;
+  height: 320px;
 }
 
 .profile-subheader {
