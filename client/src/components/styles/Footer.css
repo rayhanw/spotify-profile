@@ -1,0 +1,64 @@
+footer {
+  padding: 1em 3em;
+  background-color: var(--sec);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+footer a,
+footer p {
+  color: white;
+}
+
+footer a {
+  margin: 0;
+  transition: color .25s ease;
+}
+
+footer a:hover {
+  color: rgba(255, 255, 255, .8);
+}
+
+footer a i {
+  font-size: 16px;
+  text-decoration: none;
+}
+
+footer p {
+  margin: 0;
+}
+
+/* Mobile */
+@media only screen and (min-width: 320px) {
+
+  footer a,
+  footer p {
+    font-size: 14px;
+  }
+
+  footer p {
+    text-align: right;
+  }
+}
+
+/* Tablet */
+@media only screen and (min-width: 600px) {
+
+  footer a,
+  footer p {
+    font-size: 16px;
+  }
+}
+
+@media only screen and (min-width: 900px) {
+  .playlist:nth-child(even) {
+    margin-right: 16px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .playlist {
+    margin-right: 0;
+  }
+}

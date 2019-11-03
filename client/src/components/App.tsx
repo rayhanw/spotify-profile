@@ -2,6 +2,7 @@ import React, { FC, useEffect, useState } from "react";
 import SpotifyWebApi from "spotify-web-api-js";
 
 import Navbar from "./Navbar";
+import Footer from "./Footer";
 import SEO from "./SEO";
 import UserProfile from "./User/UserProfile";
 import {
@@ -103,6 +104,7 @@ const App: FC = () => {
 				<SEO />
 				<main>{renderUser()}</main>
 			</div>
+			<Footer />
 		</div>
 	);
 };
