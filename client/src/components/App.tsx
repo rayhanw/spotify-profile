@@ -9,6 +9,11 @@ import {
 	Playlists,
 	RecentlyPlayedTracks
 } from "./User/user_interfaces";
+import {
+	getUserInformation,
+	getUserPlaylists,
+	getRecentlyPlayed
+} from "./spotify";
 
 import "./styles/App.css";
 
@@ -44,36 +49,21 @@ const App: FC = () => {
 		return null;
 	};
 
-	const getUserInfo = async (spotify: any, username: string) => {
-		const info: UserInfo = await spotify.getUser(username);
-		setUserInfo(info);
-	};
-
-	const getUserPlaylists = async (spotify: any, username: string) => {
-		const options = { limit: 5 };
-
-		const info: Playlists = await spotify.getUserPlaylists(username, options);
-		setPlaylists(info);
-	};
-
-	const getRecentlyPlayed = async (spotify: any) => {
-		const options = { limit: 10 };
-
-		const info = await spotify.getMyRecentlyPlayedTracks(options);
-		setRecentTracks(info);
-	};
-
 	useEffect(() => {
-		const token = getParams();
-		const spotify = new SpotifyWebApi();
+		const getAllInformation = async () => {
+			const token = getParams();
+			const spotify = new SpotifyWebApi();
 
-		if (token) {
-			spotify.setAccessToken(token.accessToken);
-			setLoggedIn(true);
-			getUserInfo(spotify, token.username);
-			getUserPlaylists(spotify, token.username);
-			getRecentlyPlayed(spotify);
-		}
+			if (token) {
+				spotify.setAccessToken(token.accessToken);
+				setLoggedIn(true);
+				setUserInfo(await getUserInformation(spotify, token.username));
+				setPlaylists(await getUserPlaylists(spotify, token.username));
+				setRecentTracks(await getRecentlyPlayed(spotify));
+			}
+		};
+
+		getAllInformation();
 	}, []);
 
 	const renderUser = (): JSX.Element => {
