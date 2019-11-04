@@ -42,6 +42,10 @@
 
 /* Mobile */
 @media only screen and (min-width: 320px) {
+  .tracks-container {
+    margin: 0 1em;
+  }
+
   .tracks {
     grid-template-rows: 1fr;
     overflow-x: scroll;
