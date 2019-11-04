@@ -11,9 +11,6 @@ const Artist: FC<ArtistProp> = ({ artist }) => {
 	const { spotify } = external_urls;
 	const [first] = images;
 
-	console.log("images:", images);
-	console.log("first:", first);
-
 	const renderGenres = (): JSX.Element[] => {
 		return genres
 			.slice(0, 3)
@@ -21,12 +18,49 @@ const Artist: FC<ArtistProp> = ({ artist }) => {
 			.map((genre: any) => <li key={genre}>{genre}</li>);
 	};
 
+	const renderName = (): JSX.Element => {
+		if (first) {
+			return (
+				<>
+					<a className="artist-name" href={first.url}>
+						{name}
+					</a>{" "}
+				</>
+			);
+		}
+
+		return (
+			<>
+				<p className="artist-name">
+					{name} (<span>Artist link does not exist</span>)
+				</p>
+			</>
+		);
+	};
+
+	const renderImage = (): JSX.Element => {
+		if (first) {
+			return (
+				<img
+					src={first.url}
+					alt={name}
+					height={first.height / 2}
+					width={first.width / 2}
+				/>
+			);
+		}
+
+		return (
+			<div style={{ height: 320, width: 320 }}>
+				<p style={{ marginBottom: 0 }}>No image available</p>
+			</div>
+		);
+	};
+
 	return (
 		<div className="Artist">
 			<h3>
-				<a className="artist-name" href={first.url}>
-					{name}
-				</a>{" "}
+				{renderName()}
 				with <span style={{ color: "white" }}>{followers.total}</span> followers
 			</h3>
 			<a
@@ -35,12 +69,7 @@ const Artist: FC<ArtistProp> = ({ artist }) => {
 				rel="noopener noreferrer"
 				className="artist-photo"
 			>
-				<img
-					src={first.url}
-					alt={name}
-					height={first.height / 2}
-					width={first.width / 2}
-				/>
+				{renderImage()}
 			</a>
 			<ul className="genres">{renderGenres()}</ul>
 		</div>
