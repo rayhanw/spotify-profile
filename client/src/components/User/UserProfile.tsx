@@ -5,6 +5,7 @@ import UserRecentlyPlayed from "./UserRecentlyPlayed";
 import UserFollowedArtists from "./UserFollowedArtists";
 import { UserInfo } from "./user_interfaces";
 
+import spotifyLogo from "../images/default_avatar.png";
 import "./styles/Profile.css";
 
 const UserProfile: FC<UserInfo> = props => {
@@ -20,11 +21,19 @@ const UserProfile: FC<UserInfo> = props => {
 		return <UserFollowedArtists {...props.followedArtists.artists} />;
 	};
 
+	const getImageUrl = (): JSX.Element => {
+		if (props.images[0]) {
+			return <img src={props.images[0].url} alt="avatar" className="avatar" />;
+		}
+
+		return <img src={spotifyLogo} alt="avatar" className="avatar" />;
+	};
+
 	return (
 		<div className="User-profile" id="profile">
 			<div>
 				<div className="profile-header">
-					<img src={props.images[0].url} alt="avatar" className="avatar" />
+					{getImageUrl()}
 					<div className="profile-subheader">
 						<h1 style={{ marginBottom: 0, color: "white" }}>
 							{props.display_name}
