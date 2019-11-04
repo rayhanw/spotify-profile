@@ -6,12 +6,14 @@ import { FollowedArtists, Artist as ArtistProps } from "./user_interfaces";
 import "./styles/Artist.css";
 
 const UserFollowedArtists: FC<FollowedArtists> = ({ items }) => {
-	const renderArtists = (): JSX.Element[] | undefined => {
+	const renderArtists = (): JSX.Element[] | null => {
 		if (items) {
 			return items.map((artist: ArtistProps) => (
 				<Artist artist={artist} key={artist.id} />
 			));
 		}
+
+		return null;
 	};
 
 	return (
