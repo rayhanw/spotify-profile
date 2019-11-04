@@ -18,7 +18,7 @@ const UserPlaylist: FC<PlaylistProps> = ({ playlist }) => {
 	return (
 		<div className="playlist">
 			<h4>
-				{playlist.name} by{" "}
+				<span style={{ color: "white" }}>{playlist.name}</span> by{" "}
 				<a
 					className="playlist-owner"
 					href={playlist.owner.external_urls.spotify}
