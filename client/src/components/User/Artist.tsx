@@ -11,6 +11,9 @@ const Artist: FC<ArtistProp> = ({ artist }) => {
 	const { spotify } = external_urls;
 	const [first] = images;
 
+	console.log("images:", images);
+	console.log("first:", first);
+
 	const renderGenres = (): JSX.Element[] => {
 		return genres
 			.slice(0, 3)
