@@ -26,7 +26,7 @@ const UserProfile: FC<UserInfo> = props => {
 			return <img src={props.images[0].url} alt="avatar" className="avatar" />;
 		}
 
-		return <img src={spotifyLogo} alt="avatar" className="avatar" />;
+		return <img src={spotifyLogo} alt="avatar" className="default avatar" />;
 	};
 
 	return (

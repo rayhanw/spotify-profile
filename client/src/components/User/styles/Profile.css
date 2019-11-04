@@ -6,6 +6,11 @@
   transition: border .3s linear;
 }
 
+.default.avatar {
+  width: 240px;
+  height: 240px;
+}
+
 .avatar:hover {
   border: 10px solid var(--sec);
 }
