@@ -12,6 +12,25 @@ interface ArtistImage {
 	url: string;
 }
 
+type AlbumInfo = {
+	album_type: string;
+	external_urls: Link;
+	href: string;
+	id: string;
+	name: string;
+	release_date: string;
+};
+
+export interface TopTrackInfo {
+	album: AlbumInfo;
+	duration_ms: number;
+	external_urls: Link;
+	id: string;
+	name: string;
+	explicit: boolean;
+	artists: Artist[];
+}
+
 export interface Artist {
 	external_urls: Link;
 	followers: { total: number };
@@ -33,6 +52,7 @@ export interface UserInfo {
 	playlists: any;
 	recentTracks: any;
 	followedArtists: any;
+	topTracks: any;
 }
 
 export interface Playlist {
@@ -82,5 +102,10 @@ export enum DefaultUserInfo {
 	uri = "",
 	playlists = "",
 	recentTracks = "",
-	followedArtists = ""
+	followedArtists = "",
+	topTracks = ""
+}
+
+export interface TopTracks {
+	items: TopTrackInfo[];
 }
