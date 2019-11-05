@@ -3,6 +3,7 @@ import React, { FC } from "react";
 import UserPlaylists from "./UserPlaylists";
 import UserRecentlyPlayed from "./UserRecentlyPlayed";
 import UserFollowedArtists from "./UserFollowedArtists";
+import UserTopTracks from "./UserTopTracks";
 import { UserInfo } from "./user_interfaces";
 
 import spotifyLogo from "../images/default_avatar.png";
@@ -19,6 +20,10 @@ const UserProfile: FC<UserInfo> = props => {
 
 	const renderFollowedArtists = (): JSX.Element => {
 		return <UserFollowedArtists {...props.followedArtists.artists} />;
+	};
+
+	const renderTopTracks = (): JSX.Element => {
+		return <UserTopTracks {...props.topTracks} />;
 	};
 
 	const getImageUrl = (): JSX.Element => {
@@ -52,6 +57,7 @@ const UserProfile: FC<UserInfo> = props => {
 			<div>{renderPlaylists()}</div>
 			<div>{renderTracks()}</div>
 			<div>{renderFollowedArtists()}</div>
+			<div>{renderTopTracks()}</div>
 		</div>
 	);
 };

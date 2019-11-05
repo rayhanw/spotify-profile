@@ -10,13 +10,15 @@ import {
 	DefaultUserInfo,
 	Playlists,
 	RecentlyPlayedTracks,
-	FollowedArtists
+	FollowedArtists,
+	TopTracks
 } from "./User/user_interfaces";
 import {
 	getUserInformation,
 	getUserPlaylists,
 	getRecentlyPlayed,
-	getFollowedArtists
+	getFollowedArtists,
+	getTopTracks
 } from "./spotify";
 
 import "./styles/App.css";
@@ -38,6 +40,7 @@ const App: FC = () => {
 	const [followedArtists, setFollowedArtists] = useState<FollowedArtists>({
 		items: []
 	});
+	const [topTracks, setTopTracks] = useState<TopTracks>({ items: [] });
 
 	const getParams = (): ParamsToken => {
 		let [
@@ -68,6 +71,7 @@ const App: FC = () => {
 				setPlaylists(await getUserPlaylists(spotify, token.username));
 				setRecentTracks(await getRecentlyPlayed(spotify));
 				setFollowedArtists(await getFollowedArtists(spotify));
+				setTopTracks(await getTopTracks(spotify));
 			}
 		};
 
@@ -86,6 +90,7 @@ const App: FC = () => {
 					playlists={playlists}
 					recentTracks={recentTracks}
 					followedArtists={followedArtists}
+					topTracks={topTracks}
 				/>
 			);
 		}

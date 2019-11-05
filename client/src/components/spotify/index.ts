@@ -20,3 +20,8 @@ export const getFollowedArtists = async (spotify: any) => {
 	const info = await spotify.getFollowedArtists(options);
 	return info;
 };
+
+export const getTopTracks = async (spotify: any) => {
+	const info = await spotify.getMyTopTracks(options);
+	return info;
+};
