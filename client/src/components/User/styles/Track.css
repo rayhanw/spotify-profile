@@ -65,6 +65,7 @@
   grid-template-columns: 300px 200px 300px 50px;
   border-bottom: 1px solid rgba(255, 255, 255, .2);
   padding: 0 16px;
+  transition: background-color .25s ease;
 }
 
 .top-track:hover {
