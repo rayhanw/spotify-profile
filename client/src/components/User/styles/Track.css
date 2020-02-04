@@ -200,13 +200,12 @@
   }
 
   .top-tracks-header h4 {
-    margin-left: 1.5em;
-    text-align: left;
+    width: 300px;
+    text-align: center;
   }
 
   .top-tracks-header h4:last-of-type {
-    text-align: center;
-    margin-left: 4em;
+    margin-left: 11em;
   }
 
   .top-track {
